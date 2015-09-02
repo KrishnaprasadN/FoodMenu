@@ -20,6 +20,7 @@ import com.app.template.dto.ItemList;
 public class ItemListFragment extends Fragment {
     private String mCategoryId = "0";
     private RecyclerView mRecyclerView;
+    private ItemList[] mItemList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -42,7 +43,6 @@ public class ItemListFragment extends Fragment {
     }
 
     public class CategoryItemListAdapter extends RecyclerView.Adapter<CategoryItemListAdapter.ViewHolder> {
-        private ItemList[] mItemList;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public TextView mCategoryItemTitle;
@@ -79,13 +79,12 @@ public class ItemListFragment extends Fragment {
         public int getItemCount() {
             return mItemList.length;
         }
-
-        public void updateItem(String categoryId) {
-            mCategoryId = categoryId;
-            mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(mCategoryId);
-            mRecyclerView.invalidate();
-        }
     }
 
+    public void updateItem(String categoryId) {
+        mCategoryId = categoryId;
+        mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(mCategoryId);
+        mRecyclerView.invalidate();
+    }
 }
 
