@@ -12,4 +12,9 @@ public class Constants {
     public static final String KEY_CATEGORY_NAME = "name";
     public static final String KEY_CATEGORY_ID = "id";
 
+    //Fragment Tags
+    public static final String FRAGMENT_TAG_CATEGORY = "Category";
+    public static final String FRAGMENT_TAG_ITEMlIST = "ItemList";
+    public static final String FRAGMENT_TAG_ORDER = "Order";
+
 }
