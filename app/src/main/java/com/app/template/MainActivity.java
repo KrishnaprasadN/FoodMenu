@@ -10,7 +10,7 @@ import com.app.template.fragments.CategoryListFragment;
 import com.app.template.fragments.ItemListFragment;
 import com.app.template.fragments.OrderFragment;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements CategoryListFragment.CategoryItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,4 +35,10 @@ public class MainActivity extends Activity {
     }
 
 
+    @Override
+    public void onItemClick(String categoryId) {
+        ((ItemListFragment) getFragmentManager()
+                .findFragmentByTag(Constants.FRAGMENT_TAG_ITEMlIST))
+                .updateItem(categoryId);
+    }
 }

@@ -2,6 +2,8 @@ package com.app.template.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,16 +12,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.foodmenu.R;
-import com.app.template.Constants;
 import com.app.template.dto.CategoryProvider;
 import com.app.template.dto.ItemList;
+
 
 /**
  * Created by Krishnaprasad.n on 9/2/2015.
  */
 public class ItemListFragment extends Fragment {
-    private String mCategoryId = "0";
+    private String mCategoryId = "C0001";
     private RecyclerView mRecyclerView;
+    private CategoryItemListAdapter mAdapter;
     private ItemList[] mItemList;
 
     @Override
@@ -27,20 +30,31 @@ public class ItemListFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category_items, container, false);
 
+        mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(mCategoryId);
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.item_recycleviewer);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(new CategoryItemListAdapter());
 
-        readArguments();
+        mAdapter = new CategoryItemListAdapter();
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
 
-    private void readArguments() {
-        if (getArguments().containsKey(Constants.KEY_CATEGORY_ID)) {
-            mCategoryId = (String) getArguments().get(Constants.KEY_CATEGORY_ID);
-        }
+    public void updateItem(String categoryId) {
+        mCategoryId = categoryId;
+        mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(categoryId);
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.notifyDataSetChanged();
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.invalidate();
+            }
+        });
     }
+
 
     public class CategoryItemListAdapter extends RecyclerView.Adapter<CategoryItemListAdapter.ViewHolder> {
 
@@ -54,7 +68,6 @@ public class ItemListFragment extends Fragment {
         }
 
         public CategoryItemListAdapter() {
-            mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(mCategoryId);
         }
 
         @Override
@@ -79,12 +92,6 @@ public class ItemListFragment extends Fragment {
         public int getItemCount() {
             return mItemList.length;
         }
-    }
-
-    public void updateItem(String categoryId) {
-        mCategoryId = categoryId;
-        mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(mCategoryId);
-        mRecyclerView.invalidate();
     }
 }
 

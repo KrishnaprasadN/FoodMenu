@@ -75,9 +75,9 @@ public class CategoryListFragment extends Fragment {
             holder.mCategoryTitle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((ItemListFragment) getActivity().getFragmentManager()
-                            .findFragmentByTag(Constants.FRAGMENT_TAG_ITEMlIST))
-                            .updateItem(category.get(Constants.KEY_CATEGORY_ID));
+                    CategoryItemClickListener listener = (CategoryItemClickListener) getActivity();
+                    if (listener != null)
+                        listener.onItemClick(category.get(Constants.KEY_CATEGORY_ID));
                 }
             });
         }
@@ -90,4 +90,7 @@ public class CategoryListFragment extends Fragment {
 
     }
 
+    public interface CategoryItemClickListener {
+        void onItemClick(String categoryId);
+    }
 }
