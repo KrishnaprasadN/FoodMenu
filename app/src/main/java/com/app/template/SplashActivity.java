@@ -37,6 +37,6 @@ public class SplashActivity extends Activity {
         final Animation scale = AnimationUtils.loadAnimation(this, R.anim.scale);
         text.startAnimation(scale);
 
-        mHandler.sendMessageDelayed(new Message(), 5000);
+        mHandler.sendMessageDelayed(new Message(), 3000);
     }
 }
