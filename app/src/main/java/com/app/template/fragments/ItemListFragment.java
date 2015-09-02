@@ -90,7 +90,7 @@ public class ItemListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return mItemList.length;
+            return (mItemList == null)? 0: mItemList.length;
         }
     }
 }

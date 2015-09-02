@@ -28,7 +28,6 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
-        CategoryProvider.getInstance(this).addCategoryListRequest();
         initAnimAndLaunchMain();
     }
 
@@ -37,6 +36,6 @@ public class SplashActivity extends Activity {
         final Animation scale = AnimationUtils.loadAnimation(this, R.anim.scale);
         text.startAnimation(scale);
 
-        mHandler.sendMessageDelayed(new Message(), 3000);
+        mHandler.sendMessageDelayed(new Message(), Constants.SPLASH_TIMEOUT);
     }
 }
