@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.foodmenu.R;
+import com.app.template.Constants;
+import com.app.template.dto.CategoryProvider;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,8 +28,8 @@ public class CategoryListFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.category_recycleviewer);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //CategoryListAdapter categoryListAdapter = new CategoryListAdapter();
-        //recyclerView.setAdapter(categoryListAdapter);
+        CategoryListAdapter categoryListAdapter = new CategoryListAdapter();
+        recyclerView.setAdapter(categoryListAdapter);
 
         return view;
     }
@@ -43,21 +45,21 @@ public class CategoryListFragment extends Fragment {
             // each data item is just a string in this case
             public TextView mCategoryTitle;
 
-             public ViewHolder(View v) {
+            public ViewHolder(View v) {
                 super(v);
                 mCategoryTitle = (TextView) v.findViewById(R.id.category_title);
             }
         }
 
         // Provide a suitable constructor (depends on the kind of dataset)
-        public CategoryListAdapter(ArrayList<HashMap> categoryList) {
-            mCategoryList = categoryList;
+        public CategoryListAdapter() {
+            mCategoryList = CategoryProvider.getInstance(getActivity()).getCategoryNames();
         }
 
         // Create new views (invoked by the layout manager)
         @Override
         public CategoryListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                       int viewType) {
+                                                                 int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardrowlayout, parent, false);
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
@@ -68,8 +70,16 @@ public class CategoryListFragment extends Fragment {
         public void onBindViewHolder(ViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            HashMap<String,String> category = mCategoryList.get(position);
-            //holder.mCategoryTitle.setText(category.get());
+            final HashMap<String, String> category = mCategoryList.get(position);
+            holder.mCategoryTitle.setText(category.get(Constants.KEY_CATEGORY_NAME));
+            holder.mCategoryTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((ItemListFragment) getActivity().getFragmentManager()
+                            .findFragmentByTag(Constants.FRAGMENT_TAG_ITEMlIST))
+                            .updateItem(category.get(Constants.KEY_CATEGORY_ID));
+                }
+            });
         }
 
         // Return the size of your dataset (invoked by the layout manager)

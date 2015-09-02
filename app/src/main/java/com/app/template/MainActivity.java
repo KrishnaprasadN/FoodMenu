@@ -27,9 +27,9 @@ public class MainActivity extends Activity {
         ItemListFragment itemListFragment = new ItemListFragment();
         OrderFragment orderFragment = new OrderFragment();
 
-        fragmentTransaction.add(R.id.categorylistfragment, categoryListFragment);
-        fragmentTransaction.add(R.id.itemlistfragment, itemListFragment);
-        fragmentTransaction.add(R.id.orderfragment, orderFragment);
+        fragmentTransaction.add(R.id.categorylistfragment, categoryListFragment, Constants.FRAGMENT_TAG_CATEGORY);
+        fragmentTransaction.add(R.id.itemlistfragment, itemListFragment, Constants.FRAGMENT_TAG_ITEMlIST);
+        fragmentTransaction.add(R.id.orderfragment, orderFragment, Constants.FRAGMENT_TAG_ORDER);
 
         fragmentTransaction.commit();
     }
