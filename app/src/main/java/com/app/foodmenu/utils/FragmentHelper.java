@@ -1,4 +1,4 @@
-package com.app.template.utils;
+package com.app.foodmenu.utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

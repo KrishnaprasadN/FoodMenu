@@ -1,4 +1,4 @@
-package com.app.template.volleyutils;
+package com.app.foodmenu.volleyutils;
 
 import android.content.Context;
 

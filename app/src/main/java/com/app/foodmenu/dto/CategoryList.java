@@ -1,4 +1,4 @@
-package com.app.template.dto;
+package com.app.foodmenu.dto;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,14 +1,13 @@
-package com.app.template;
+package com.app.foodmenu;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
-import com.app.foodmenu.R;
-import com.app.template.fragments.CategoryListFragment;
-import com.app.template.fragments.ItemListFragment;
-import com.app.template.fragments.OrderFragment;
+import com.app.foodmenu.fragments.CategoryListFragment;
+import com.app.foodmenu.fragments.ItemListFragment;
+import com.app.foodmenu.fragments.OrderFragment;
 
 public class MainActivity extends Activity implements CategoryListFragment.CategoryItemClickListener {
 

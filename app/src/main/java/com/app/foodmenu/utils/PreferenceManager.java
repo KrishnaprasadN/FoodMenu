@@ -1,4 +1,4 @@
-package com.app.template.utils;
+package com.app.foodmenu.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

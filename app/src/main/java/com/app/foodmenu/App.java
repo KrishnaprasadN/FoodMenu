@@ -1,8 +1,8 @@
-package com.app.template;
+package com.app.foodmenu;
 
 import android.app.Application;
 
-import com.app.template.dto.CategoryProvider;
+import com.app.foodmenu.dto.CategoryProvider;
 
 /**
  * Created by Krishnaprasad.n on 9/2/2015.

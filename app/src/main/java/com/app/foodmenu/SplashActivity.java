@@ -1,4 +1,4 @@
-package com.app.template;
+package com.app.foodmenu;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,9 +9,6 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-
-import com.app.foodmenu.R;
-import com.app.template.dto.CategoryProvider;
 
 public class SplashActivity extends Activity {
 

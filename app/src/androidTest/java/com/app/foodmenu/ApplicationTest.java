@@ -1,4 +1,4 @@
-package com.app.template;
+package com.app.foodmenu;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

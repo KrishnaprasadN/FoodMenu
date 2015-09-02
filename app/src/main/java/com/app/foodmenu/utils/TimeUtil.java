@@ -1,4 +1,4 @@
-package com.app.template.utils;
+package com.app.foodmenu.utils;
 
 import android.text.TextUtils;
 import android.text.format.DateFormat;

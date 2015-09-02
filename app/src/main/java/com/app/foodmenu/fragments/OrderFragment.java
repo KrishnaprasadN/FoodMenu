@@ -1,4 +1,4 @@
-package com.app.template.fragments;
+package com.app.foodmenu.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;

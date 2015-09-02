@@ -1,4 +1,4 @@
-package com.app.template.volleyutils;
+package com.app.foodmenu.volleyutils;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;

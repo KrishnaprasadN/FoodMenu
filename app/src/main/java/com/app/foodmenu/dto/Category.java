@@ -1,4 +1,4 @@
-package com.app.template.dto;
+package com.app.foodmenu.dto;
 
 /**
  * Created by Krishnaprasad.n on 9/2/2015.

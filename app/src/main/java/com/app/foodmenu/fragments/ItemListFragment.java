@@ -1,4 +1,4 @@
-package com.app.template.fragments;
+package com.app.foodmenu.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.foodmenu.R;
-import com.app.template.dto.CategoryProvider;
-import com.app.template.dto.ItemList;
+import com.app.foodmenu.dto.CategoryProvider;
+import com.app.foodmenu.dto.ItemList;
 
 
 /**

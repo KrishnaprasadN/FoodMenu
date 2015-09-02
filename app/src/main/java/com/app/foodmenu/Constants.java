@@ -1,4 +1,4 @@
-package com.app.template;
+package com.app.foodmenu;
 
 /**
  * Created by Krishnaprasad.n on 9/2/2015.

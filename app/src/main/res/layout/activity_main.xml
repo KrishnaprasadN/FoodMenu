@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/categorylistfragment"
-        android:name="com.app.template.fragments.CategoryListFragment"
+        android:name="com.app.foodmenu.fragments.CategoryListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/itemlistfragment"
-        class="com.app.template.fragments.ItemListFragment"
+        class="com.app.foodmenu.fragments.ItemListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/orderfragment"
-        class="com.app.template.fragments.OrderFragment"
+        class="com.app.foodmenu.fragments.OrderFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/itemlistfragment"

@@ -1,4 +1,4 @@
-package com.app.template.dto;
+package com.app.foodmenu.dto;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -6,15 +6,14 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.app.template.Constants;
-import com.app.template.utils.CommonUtils;
-import com.app.template.volleyutils.JsonRequestVolley;
-import com.app.template.volleyutils.VolleyRequestManager;
+import com.app.foodmenu.Constants;
+import com.app.foodmenu.utils.CommonUtils;
+import com.app.foodmenu.volleyutils.JsonRequestVolley;
+import com.app.foodmenu.volleyutils.VolleyRequestManager;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
-import java.net.InterfaceAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -61,7 +60,7 @@ public class CategoryProvider {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                CommonUtils.showToast(mContext, "Error", Toast.LENGTH_SHORT);
+                //CommonUtils.showToast(mContext, "Error", Toast.LENGTH_SHORT);
                 mCategoryList = null;
                 updateNotifierState(notifier, false);
             }
