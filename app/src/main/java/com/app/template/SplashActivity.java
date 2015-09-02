@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.app.foodmenu.R;
+import com.app.template.dto.CategoryProvider;
 
 public class SplashActivity extends Activity {
 
@@ -27,14 +28,15 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
-        init();
+        CategoryProvider.getInstance(this).addCategoryListRequest();
+        initAnimAndLaunchMain();
     }
 
-    private void init() {
+    private void initAnimAndLaunchMain() {
         TextView text = (TextView) findViewById(R.id.text);
         final Animation scale = AnimationUtils.loadAnimation(this, R.anim.scale);
         text.startAnimation(scale);
 
-        mHandler.sendMessageDelayed(new Message(), 3000);
+        mHandler.sendMessageDelayed(new Message(), 5000);
     }
 }
