@@ -1,13 +1,11 @@
 package com.app.foodmenu.dto;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.app.foodmenu.Constants;
-import com.app.foodmenu.utils.CommonUtils;
 import com.app.foodmenu.volleyutils.JsonRequestVolley;
 import com.app.foodmenu.volleyutils.VolleyRequestManager;
 import com.google.gson.Gson;

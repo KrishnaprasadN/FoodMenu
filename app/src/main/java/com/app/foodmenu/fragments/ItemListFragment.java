@@ -2,8 +2,6 @@ package com.app.foodmenu.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,7 +22,6 @@ public class ItemListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private CategoryItemListAdapter mAdapter;
     private ItemList[] mItemList;
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +33,15 @@ public class ItemListFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mAdapter = new CategoryItemListAdapter();
+       /* mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override public void onChanged() {
+                super.onChanged();
+               // decoration.invalidateHeaders();
+                mAdapter.notifyDataSetChanged();
+                mRecyclerView.invalidate();
+            }
+        });
+*/
         mRecyclerView.setAdapter(mAdapter);
 
         return view;
@@ -43,16 +49,36 @@ public class ItemListFragment extends Fragment {
 
     public void updateItem(String categoryId) {
         mCategoryId = categoryId;
-        mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(categoryId);
+       // mRecyclerView.removeAllViews();
+       // mAdapter = new CategoryItemListAdapter();
+        //new ArrayList( Arrays.asList(mItemList)).clear();
+       /* (Arrays.asList(mItemList)).remove(1);
+        mRecyclerView.removeViewAt(1);
+        mAdapter.notifyItemRemoved(1);
+        mAdapter.notifyItemRangeChanged(1, mItemList.size());*/
+       // mItemList=CategoryProvider.getInstance(getActivity()).getCategoryItemsList(categoryId);
 
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
+        //mItemList = CategoryProvider.getInstance(getActivity()).getCategoryItemsList(categoryId);
+        //mRecyclerView.setAdapter(mAdapter);
+        //mAdapter.updateList(mItemList);
+/*        getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mAdapter.notifyDataSetChanged();
-                mRecyclerView.setAdapter(mAdapter);
-                mRecyclerView.invalidate();
+                ArrayList<ItemList> itemList = new ArrayList<ItemList>(Arrays.asList(mItemList))
+                mItemList = .toArray(new Integer[((Arrays.asList(mItemList)).remove(1)).size()]);
+                (Arrays.asList(mItemList)).remove(1);
+                mRecyclerView.removeViewAt(1);
+                mAdapter.notifyItemRemoved(1);
+                mAdapter.notifyItemRangeChanged(1, mItemList.length);
             }
-        });
+        });*/
+/*       new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter = new CategoryItemListAdapter();
+                mRecyclerView.setAdapter(mAdapter);
+            }
+        });*/
     }
 
 
@@ -66,6 +92,7 @@ public class ItemListFragment extends Fragment {
                 mCategoryItemTitle = (TextView) v.findViewById(R.id.item_title);
             }
         }
+
 
         public CategoryItemListAdapter() {
         }
@@ -88,10 +115,23 @@ public class ItemListFragment extends Fragment {
 
         }
 
+      /*  mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override public void onChanged() {
+                super.onChanged();
+                decoration.invalidateHeaders();
+            }
+        });*/
         @Override
         public int getItemCount() {
+            //Log.i("ItemListCount"," "+ mItemList.length);
             return (mItemList == null)? 0: mItemList.length;
         }
+        public void updateList(ItemList[] itemList) {
+
+            mItemList = itemList;
+            mAdapter.notifyDataSetChanged();
+        }
     }
+
 }
 

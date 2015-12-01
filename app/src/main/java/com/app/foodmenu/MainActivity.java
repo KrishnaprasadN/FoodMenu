@@ -6,7 +6,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.app.foodmenu.fragments.CategoryListFragment;
-import com.app.foodmenu.fragments.ItemListFragment;
+import com.app.foodmenu.fragments.ItemListFragment2;
 import com.app.foodmenu.fragments.OrderFragment;
 
 public class MainActivity extends Activity implements CategoryListFragment.CategoryItemClickListener {
@@ -23,7 +23,8 @@ public class MainActivity extends Activity implements CategoryListFragment.Categ
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         CategoryListFragment categoryListFragment = new CategoryListFragment();
-        ItemListFragment itemListFragment = new ItemListFragment();
+        //ItemListFragment itemListFragment = new ItemListFragment();
+        ItemListFragment2 itemListFragment = new ItemListFragment2();
         OrderFragment orderFragment = new OrderFragment();
 
         fragmentTransaction.add(R.id.categorylistfragment, categoryListFragment, Constants.FRAGMENT_TAG_CATEGORY);
@@ -35,9 +36,15 @@ public class MainActivity extends Activity implements CategoryListFragment.Categ
 
 
     @Override
-    public void onItemClick(String categoryId) {
-        ((ItemListFragment) getFragmentManager()
-                .findFragmentByTag(Constants.FRAGMENT_TAG_ITEMlIST))
-                .updateItem(categoryId);
+    public void onItemClick(final String categoryId) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+               /* ((ItemListFragment2) getFragmentManager()
+                        .findFragmentByTag(Constants.FRAGMENT_TAG_ITEMlIST))
+                        .updateItem(categoryId);*/
+            }
+        });
+
     }
 }
